@@ -1,0 +1,12 @@
+___________BUGS___________
++ Files not uploaded as PDF
++ Email Authentication not effective
++ Display election data
++ Student Voting
+
+
+___________TODO___________
+
+
+___________DONE___________
++ File name not showing in the input field

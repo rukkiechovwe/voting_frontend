@@ -1,0 +1,90 @@
+@font-face {
+  font-family: "GTWalsheimProBlack";
+  src: url(./assets/fonts/GTWalsheimPro-Black.ttf) format("truetype");
+}
+@font-face {
+  font-family: "GTWalsheimProBold";
+  src: url(./assets/fonts/GTWalsheimPro-Bold.ttf) format("truetype");
+}
+@font-face {
+  font-family: "GTWalsheimProLight";
+  src: url(./assets/fonts/GTWalsheimPro-Light.ttf) format("truetype");
+}
+@font-face {
+  font-family: "GTWalsheimProRegular";
+  src: url(./assets/fonts/GTWalsheimPro-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "GTWalsheimProMedium";
+  src: url(./assets/fonts/GTWalsheimPro-Medium.ttf) format("truetype");
+}
+@font-face {
+  font-family: "GTWalsheimProThin";
+  src: url(./assets/fonts/GTWalsheimPro-Thin.ttf) format("truetype");
+}
+body {
+  margin: 0;
+  font-family: "GTWalsheimProRegular", sans-serif !important;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f6f1ff !important;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "GTWalsheimProBold", sans-serif !important;
+  font-weight: 700;
+}
+p,
+ul,
+li,
+th,
+tr,
+td,
+thead {
+  color: #4f4f4f;
+}
+td,
+tr,
+th {
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 13px;
+  font-family: "GTWalsheimProRegular", sans-serif;
+}
+a {
+  text-decoration: none !important;
+  color: #703bda;
+}
+input,
+button,
+select {
+  outline: none !important;
+  outline-offset: 0 !important;
+}
+input:hover,
+input:focus,
+select:focus {
+  color: #222 !important;
+  outline: none !important;
+  border: 1p solid #703bda;
+  box-shadow: none !important;
+}
+button:hover,
+button:focus {
+  background: #6837ca9e !important;
+  color: #fff !important;
+  outline: none !important;
+  outline-offset: 0 !important;
+  box-shadow: none !important;
+}
+/* code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+} */
