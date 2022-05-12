@@ -69,6 +69,15 @@ function Register() {
       />
       <ErrorMessage type="email" />
 
+      <InputField
+        name="matNo"
+        type="text"
+        placeholder="Matriculation Number"
+        onChange={(e) => handleChange(e)}
+        icon={<User size={20} />}
+      />
+      <ErrorMessage type="matNo" />
+
       <SelectField
         name="level"
         placeholder="Select level"

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import {
   auth,
   firestore_sendSignInLinkToEmail,
@@ -12,6 +14,7 @@ import {
 } from "../../firebase";
 
 const useRegisterForm = (validationRules) => {
+  const navigate = useNavigate();
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -34,7 +37,7 @@ const useRegisterForm = (validationRules) => {
   };
 
   const actionCodeSettings = {
-    url: "http://localhost:3000/",
+    url: "https://unibennacos.netlify.app/",
     handleCodeInApp: true,
   };
 
@@ -69,6 +72,7 @@ const useRegisterForm = (validationRules) => {
                   uploadStudent = {
                     ...uploadStudent,
                     duesUrl: url,
+                    eligible: false,
                   };
                   delete uploadStudent.fees;
                   delete uploadStudent.dues;
@@ -83,6 +87,7 @@ const useRegisterForm = (validationRules) => {
                   );
                   await firestore_setDoc(docRef, uploadStudent);
                   await setLoading(false);
+                  navigate("/email-auth");
                 });
               });
             }
@@ -92,6 +97,7 @@ const useRegisterForm = (validationRules) => {
 
       .catch((error) => {
         console.log(error);
+        setLoading(false);
       });
   };
 

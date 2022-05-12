@@ -5,6 +5,7 @@ export const ValidationRules = (values) => {
   if (!values.fname) errors.fname = "first name is required";
   if (!values.lname) errors.lname = "last name is required";
   if (!values.email) errors.email = "email is required";
+  if(!values.matNo) errors.matNo = "matriculation number is required";
   else if (!validateEmail(values.email)) errors.email = "Incorrect Email";
   if (!values.level) errors.level = "level is required";
   if (!values.fees) errors.fees = "fees is required";
