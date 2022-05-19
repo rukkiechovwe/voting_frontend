@@ -1,15 +1,14 @@
 ___________BUGS___________
 + Email Authentication not effective
-+ Display election data
-+ Student Voting
-
 
 ___________TODO___________
-
++ Student Voting
 
 ___________DONE___________
 + File name not showing in the input field
 + Files not uploaded as PDF
++ Display election data
+
 
 
 flow...

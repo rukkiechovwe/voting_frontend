@@ -6,11 +6,11 @@ export const theme = extendTheme({
       primary: "#703bda",
       white: "#FFFFFF",
       black: "#333333",
-      light: "#F8FFFC",
+      light: "#f8f5ff",
       dark: "#585858",
       danger: "#FF0000",
-      sucess: "#00DD76",
-      borderColor:"#E2E8F0"
+      success: "#33be00",
+      borderColor: "#E2E8F0",
     },
   },
   styles: {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Text } from "@chakra-ui/react";
 import { EnvelopeSimple, Key } from "phosphor-react";
 
@@ -6,6 +6,7 @@ import useLoginForm from "./useLoginForm";
 import { ValidationRules } from "./validationRules";
 import { InputField } from "../../common/inputField";
 import Authentication from "../../components/Authentication";
+import AppButton from "../../common/button";
 
 function Login() {
   const { isSecond, errors, loading, handleChange, handleSubmit } =
@@ -60,19 +61,14 @@ function Login() {
           />
           <ErrorMessage type="email" />
 
-          <Button
-            size="md"
+          <AppButton
             mt="20px"
-            h="50px"
-            w="470px"
-            bg="brand.primary"
-            color="brand.white"
             onClick={(e) => {
               handleSubmit(e);
             }}
           >
             {loading ? "please wait..." : "Send OTP"}
-          </Button>
+          </AppButton>
         </div>
       )}
     </Authentication>

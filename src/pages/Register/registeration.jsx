@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Text } from "@chakra-ui/react";
+import { Text } from "@chakra-ui/react";
 import {
   EnvelopeSimple,
   Receipt,
@@ -16,6 +16,7 @@ import {
   SelectField,
 } from "../../common/inputField";
 import Authentication from "../../components/Authentication";
+import AppButton from "../../common/button";
 
 function Register() {
   const { values, errors, loading, handleChange, handleImage, handleSubmit } =
@@ -115,19 +116,14 @@ function Register() {
       />
       <ErrorMessage type="dues" />
 
-      <Button
-        size="md"
+      <AppButton
         mt="30px"
-        h="50px"
-        w="470px"
-        bg="brand.primary"
-        color="brand.white"
         onClick={(e) => {
           handleSubmit(e);
         }}
       >
         {loading ? "please wait..." : "Register"}
-      </Button>
+      </AppButton>
     </Authentication>
   );
 }

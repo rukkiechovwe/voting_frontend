@@ -16,12 +16,18 @@ export const ModalComponent = ({
   onOpen,
   onClose,
   footer,
+  background,
+  closeOnOverlayClick,
 }) => {
   return (
     <>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        closeOnOverlayClick={closeOnOverlayClick ? true : false}
+      >
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent background={background}>
           <ModalHeader>{header}</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>{children}</ModalBody>
