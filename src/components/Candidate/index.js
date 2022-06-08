@@ -12,9 +12,9 @@ import {
 import { ElectionContext } from "../../context/electionContext";
 import AppButton from "../../common/button";
 import useVotingForm from "./useVotingForm";
-import { ModalComponent } from "../../common/modal";
+import ModalComponent from "../../common/modal/Modal";
 
-function Candidates({ isOpen, onClose }) {
+function Candidates({ isModalOpen, onModalClose }) {
   const { candidates, electionDetail } = useContext(ElectionContext);
   const {
     handleChange,
@@ -38,13 +38,13 @@ function Candidates({ isOpen, onClose }) {
 
   return (
     <ModalComponent
-      isOpen={isOpen}
-      onClose={onClose}
+      isOpen={isModalOpen}
+      onClose={onModalClose}
       header="Voting"
       footer={false}
       isCentered={true}
       background="brand.light"
-      closeOnOverlayClick={false}
+      closeOnOverlayClick={true}
     >
       {candidates.length > 0 && (
         <form>

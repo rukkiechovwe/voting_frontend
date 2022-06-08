@@ -78,20 +78,30 @@ select:focus {
 }
 button:hover,
 button:focus {
-  background: #6837ca9e !important;
+  /* background: #6837ca9e !important; */
+  background: #703bda !important;
   color: #fff !important;
   outline: none !important;
   outline-offset: 0 !important;
-  box-shadow: none !important;
+  box-shadow: 0px 0px 10px 6px #3e3e3e38 !important;
 }
 button.success:hover,
 button.success:focus {
-  background: #33be00ce !important;
+  background: #33be00 !important;
   color: #fff !important;
   outline: none !important;
   outline-offset: 0 !important;
-  box-shadow: none !important;
+  box-shadow: 0px 0px 10px 6px #3e3e3e38 !important;
 }
+button.danger:hover,
+button.danger:focus {
+  background: #e53e3e !important;
+  color: #fff !important;
+  outline: none !important;
+  outline-offset: 0 !important;
+  box-shadow: 0px 0px 10px 6px #3e3e3e38 !important;
+}
+
 .container {
   max-width: 100%;
   margin: 0 auto;

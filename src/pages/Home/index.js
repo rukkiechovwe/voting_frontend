@@ -82,7 +82,7 @@ function Home() {
             <AppButton onClick={onOpen}>Start Voting</AppButton>
           </Box>
         )}
-        <Candidates isOpen={isOpen} onClose={onClose} />
+        <Candidates isModalOpen={isOpen} onModalClose={onClose} />
       </Flex>
     </>
   );

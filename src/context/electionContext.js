@@ -20,10 +20,6 @@ function ElectionContextProvider({ children }) {
   //     setElectionYear(year);
   //   };
 
-
-
-  
-
   const getElectionDetail = async () => {
     setLoading(true);
     const docRef = firestore_doc(db, "2020", "Metadata");

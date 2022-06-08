@@ -1,14 +1,13 @@
 ___________BUGS___________
-+ Email Authentication not effective
++ Student registration flow not effective
 
 ___________TODO___________
-+ Student Voting
++ integrate web sockets
++ No voting more than once
++ Success page after voting
 
 ___________DONE___________
-+ File name not showing in the input field
-+ Files not uploaded as PDF
-+ Display election data
-
++ Student Voting
 
 
 flow...

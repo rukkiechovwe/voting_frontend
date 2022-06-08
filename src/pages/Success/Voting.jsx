@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 
-function RegisterSuccess() {
+function VotingSuccess() {
   return (
     <Box
       minH="100vh"
@@ -23,13 +23,15 @@ function RegisterSuccess() {
         h="100%"
       >
         <Heading mb="30px" as="h3" color="brand.primary" textAlign="center">
-          Registration in progress
+          Voting was successful
         </Heading>
-        <Text>Please wait while we verify your details...</Text>
-        <Text>We will get back to you via email.</Text>
+        <Text>
+          Thank you for voting for your favorite candidate. Be rest assured that
+          your votes count.
+        </Text>
       </Flex>
     </Box>
   );
 }
 
-export default RegisterSuccess;
+export default VotingSuccess;

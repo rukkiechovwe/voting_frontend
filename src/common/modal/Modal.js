@@ -9,7 +9,8 @@ import {
   ModalCloseButton,
   Button,
 } from "@chakra-ui/react";
-export const ModalComponent = ({
+import AlertComponent from "./AlertDialogue";
+const ModalComponent = ({
   children,
   header,
   isOpen,
@@ -28,10 +29,13 @@ export const ModalComponent = ({
       >
         <ModalOverlay />
         <ModalContent background={background}>
-          <ModalHeader>{header}</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody pb={6}>{children}</ModalBody>
+          <ModalHeader fontFamily="GTWalsheimProBold" fontWeight="100">
+            {header}
+          </ModalHeader>
+          <AlertComponent />
+          {/* <ModalCloseButton  /> */}
 
+          <ModalBody pb={6}>{children}</ModalBody>
           {footer && (
             <ModalFooter>
               <Button colorScheme="blue" mr={3}>
@@ -44,3 +48,4 @@ export const ModalComponent = ({
     </>
   );
 };
+export default ModalComponent;
