@@ -6,15 +6,23 @@ import RegisterSuccess from "../pages/Success/Register";
 import VotingSuccess from "../pages/Success/Voting";
 import EmailAuth from "../pages/Success/EmailAuth";
 
-export default () => {
+const Router = ({ hasToken }) => {
   return (
     <Routes>
+      {/* {hasToken ? ( */}
+      {/* <> */}
       <Route exact path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Registeration />} />
       <Route path="/email-auth" element={<EmailAuth />} />
       <Route path="/register-success" element={<RegisterSuccess />} />
       <Route path="/voting-success" element={<VotingSuccess />} />
+      {/* </> */}
+      {/* ) : ( */}
+      {/* <> */}
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Registeration />} />
+      {/* </> */}
+      {/* )} */}
     </Routes>
   );
 };
+export default Router;

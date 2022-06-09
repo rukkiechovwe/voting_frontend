@@ -25,26 +25,10 @@ function Login() {
     <Authentication>
       {isSecond ? (
         <div className="otp">
-          <Text mb="30px">Enter the OTP sent to your email address</Text>
-          <InputField
-            name="otp"
-            type="text"
-            placeholder="OTP"
-            onChange={(e) => handleChange(e)}
-            icon={<Key size={20} />}
-          />
-          <ErrorMessage type="otp" />
-
-          <Button
-            size="md"
-            mt="20px"
-            h="50px"
-            w="470px"
-            bg="brand.primary"
-            color="brand.white"
-          >
-            {loading ? "please wait..." : "Verify OTP"}
-          </Button>
+          <Text mb="30px">
+            We have sent you your sign-in link. Click the link sent to your
+            email address registered on our system.
+          </Text>
         </div>
       ) : (
         <div className="email">
@@ -67,7 +51,7 @@ function Login() {
               handleSubmit(e);
             }}
           >
-            {loading ? "please wait..." : "Send OTP"}
+            {loading ? "please wait..." : "Send Login Link"}
           </AppButton>
         </div>
       )}

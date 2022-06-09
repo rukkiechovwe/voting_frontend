@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import {
   auth,
   firestore_sendSignInLinkToEmail,
@@ -12,6 +11,8 @@ import {
   firestore_uploadBytes,
   firestore_getDownloadURL,
 } from "../../firebase";
+import { TOKEN } from "../../utils/constants";
+
 
 const useRegisterForm = (validationRules) => {
   const navigate = useNavigate();
@@ -45,7 +46,7 @@ const useRegisterForm = (validationRules) => {
     setLoading(true);
     firestore_sendSignInLinkToEmail(auth, values.email, actionCodeSettings)
       .then(async () => {
-        window.localStorage.setItem("emailForSignIn", values.email);
+        window.localStorage.setItem(TOKEN, values.email);
         const storageRef = firestore_ref(
           storage,
           `students_fees/${`${values.fname} ${values.lname}`
