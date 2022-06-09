@@ -8,6 +8,8 @@ import {
   ListItem,
   UnorderedList,
 } from "@chakra-ui/react";
+import { NavLink } from "react-router-dom";
+
 import Candidates from "../../components/Candidate";
 import { ElectionContext } from "../../context/electionContext";
 import AppButton from "../../common/button";
@@ -25,13 +27,11 @@ function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   // Confirm the link is a sign-in with email link.
-  //   const auth = getAuth();
+
   if (firestore_isSignInWithEmailLink(auth, window.location.href)) {
     // Additional state parameters can also be passed via URL.
-    // This can be used to continue the user's intended action before triggering
-    // the sign-in operation.
-    // Get the email if available. This should be available if the user completes
-    // the flow on the same device where they started it.
+    // This can be used to continue the user's intended action before triggering the sign-in operation.
+    // Get the email if available. This should be available if the user completes the flow on the same device where they started it.
     let email = window.localStorage.getItem(TOKEN);
     if (!email) {
       // User opened the link on a different device. To prevent session fixation
@@ -41,7 +41,6 @@ function Home() {
     // The client SDK will parse the code from the link for you.
     firestore_sendSignInLinkToEmail(auth, email, window.location.href)
       .then((result) => {
-        // Clear email from storage.
         window.localStorage.removeItem(TOKEN);
         console.log(result);
         console.log(result.user);
@@ -51,8 +50,7 @@ function Home() {
         // result.additionalUserInfo.isNewUser
       })
       .catch((error) => {
-        // Some error occurred, you can inspect the code: error.code
-        // Common errors could be invalid email and invalid or expired OTPs.
+        console.log(error);
       });
   }
 
@@ -68,6 +66,7 @@ function Home() {
       >
         Nacos
       </Text>
+      <NavLink to="/login">Login</NavLink>
       <Flex
         minH="100vh"
         w="100%"
@@ -95,6 +94,7 @@ function Home() {
             boxShadow=" 0px 0px 50px rgba(0, 0, 0, 0.05)"
             fontSize={{ base: "16px", sm: "18px" }}
           >
+            <NavLink to="/login">Login</NavLink>
             <Text
               fontSize={{ base: "24px", md: "30px" }}
               fontFamily="GTWalsheimProBold"
