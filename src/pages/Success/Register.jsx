@@ -3,32 +3,37 @@ import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 
 function RegisterSuccess() {
   return (
-    <Box
+    <Flex
       minH="100vh"
-      pos="fixed"
-      w="100%"
       h="100%"
       py="30px"
-      zIndex={2}
-      top={0}
-      left={0}
-      bg="#fff"
       overflow="auto"
+      justifyContent="center"
+      alignItems="center"
+      w="100%"
     >
-      <Flex
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="center"
-        w="100%"
-        h="100%"
+      <Box
+        w={{ base: "100%", sm: "500px", md: "530px" }}
+        p="30px"
+        bg="#fff"
+        boxShadow=" 0px 0px 50px rgba(0, 0, 0, 0.05)"
+        textAlign="center"
+        fontSize="16px"
       >
-        <Heading mb="30px" as="h3" color="brand.primary" textAlign="center">
+        <Heading
+          mb="30px"
+          as="h6"
+          color="brand.primary"
+          fontSize="22px"
+          fontFamily="GTWalsheimProBold"
+          fontWeight="100"
+        >
           Registration in progress
         </Heading>
         <Text>Please wait while we verify your details...</Text>
         <Text>We will get back to you via email.</Text>
-      </Flex>
-    </Box>
+      </Box>
+    </Flex>
   );
 }
 

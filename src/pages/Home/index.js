@@ -9,11 +9,9 @@ import {
   UnorderedList,
 } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
-
 import Candidates from "../../components/Candidate";
 import { ElectionContext } from "../../context/electionContext";
 import AppButton from "../../common/button";
-
 import {
   auth,
   firestore_sendSignInLinkToEmail,
@@ -25,34 +23,6 @@ import { TOKEN } from "../../utils/constants";
 function Home() {
   const { candidates } = useContext(ElectionContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
-
-  // Confirm the link is a sign-in with email link.
-
-  if (firestore_isSignInWithEmailLink(auth, window.location.href)) {
-    // Additional state parameters can also be passed via URL.
-    // This can be used to continue the user's intended action before triggering the sign-in operation.
-    // Get the email if available. This should be available if the user completes the flow on the same device where they started it.
-    let email = window.localStorage.getItem(TOKEN);
-    if (!email) {
-      // User opened the link on a different device. To prevent session fixation
-      // attacks, ask the user to provide the associated email again. For example:
-      email = window.prompt("Please provide your email for confirmation");
-    }
-    // The client SDK will parse the code from the link for you.
-    firestore_sendSignInLinkToEmail(auth, email, window.location.href)
-      .then((result) => {
-        window.localStorage.removeItem(TOKEN);
-        console.log(result);
-        console.log(result.user);
-        // Additional user info profile not available via:
-        // result.additionalUserInfo.profile == null
-        // You can check if the user is new or existing:
-        // result.additionalUserInfo.isNewUser
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
 
   return (
     <>

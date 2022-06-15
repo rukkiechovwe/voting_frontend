@@ -23,8 +23,7 @@ const useLoginForm = (validationRules) => {
   };
 
   const actionCodeSettings = {
-     url: "https://unibennacos.netlify.app/",
-   //  url: "http://localhost:3000/",
+    url: "https://unibennacos.netlify.app/verify",
     handleCodeInApp: true,
   };
 

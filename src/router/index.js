@@ -5,6 +5,7 @@ import Registeration from "../pages/Register/registeration";
 import RegisterSuccess from "../pages/Success/Register";
 import VotingSuccess from "../pages/Success/Voting";
 import EmailAuth from "../pages/Success/EmailAuth";
+import Verify from "../pages/Success/verify";
 
 const Router = ({ hasToken }) => {
   return (
@@ -15,6 +16,7 @@ const Router = ({ hasToken }) => {
       <Route path="/email-auth" element={<EmailAuth />} />
       <Route path="/register-success" element={<RegisterSuccess />} />
       <Route path="/voting-success" element={<VotingSuccess />} />
+      <Route path="/verify" element={<Verify />} />
       {/* </> */}
       {/* ) : ( */}
       {/* <> */}
