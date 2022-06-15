@@ -1,17 +1,16 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { auth, firestore_sendSignInLinkToEmail } from "../../firebase";
 import { TOKEN } from "../../utils/constants";
 
 // import { getParamByName, notify } from "../../utils/helpers";
 
 const useLoginForm = (validationRules) => {
-  const navigate = useNavigate();
+//   const navigate = useNavigate();
   const [isSecond, setIsSecond] = useState(false);
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
-  //   const history = useHistory();
 
   const handleChange = (event) => {
     event.preventDefault();

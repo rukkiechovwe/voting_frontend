@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -56,6 +56,7 @@ function Verify() {
       alignItems="center"
       w="100%"
     >
+      <ToastContainer linit={1} />
       <Box
         w={{ base: "100%", sm: "500px", md: "530px" }}
         p="30px"

@@ -12,13 +12,6 @@ import { NavLink } from "react-router-dom";
 import Candidates from "../../components/Candidate";
 import { ElectionContext } from "../../context/electionContext";
 import AppButton from "../../common/button";
-import {
-  auth,
-  firestore_sendSignInLinkToEmail,
-  firestore_isSignInWithEmailLink,
-} from "../../firebase";
-
-import { TOKEN } from "../../utils/constants";
 
 function Home() {
   const { candidates } = useContext(ElectionContext);
