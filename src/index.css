@@ -1,30 +1,32 @@
 @font-face {
-  font-family: "GTWalsheimProBlack";
-  src: url(./assets/fonts/GTWalsheimPro-Black.ttf) format("truetype");
-}
-@font-face {
-  font-family: "GTWalsheimProBold";
-  src: url(./assets/fonts/GTWalsheimPro-Bold.ttf) format("truetype");
-}
-@font-face {
-  font-family: "GTWalsheimProLight";
+  font-family: "GTWalsheim";
+  font-weight: 300;
   src: url(./assets/fonts/GTWalsheimPro-Light.ttf) format("truetype");
 }
 @font-face {
-  font-family: "GTWalsheimProRegular";
+  font-family: "GTWalsheim";
+  font-weight: 400;
   src: url(./assets/fonts/GTWalsheimPro-Regular.ttf) format("truetype");
 }
 @font-face {
-  font-family: "GTWalsheimProMedium";
+  font-family: "GTWalsheim";
+  font-weight: 500;
   src: url(./assets/fonts/GTWalsheimPro-Medium.ttf) format("truetype");
 }
+
 @font-face {
-  font-family: "GTWalsheimProThin";
-  src: url(./assets/fonts/GTWalsheimPro-Thin.ttf) format("truetype");
+  font-family: "GTWalsheim";
+  font-weight: 600;
+  src: url(./assets/fonts/GTWalsheimPro-Bold.ttf) format("truetype");
+}
+@font-face {
+  font-family: "GTWalsheim";
+  font-weight: 700;
+  src: url(./assets/fonts/GTWalsheimPro-Black.ttf) format("truetype");
 }
 body {
   margin: 0;
-  font-family: "GTWalsheimProRegular", sans-serif !important;
+  font-family: "GTWalsheim", sans-serif !important;
   font-weight: 400;
   font-size: 14px;
   letter-spacing: 0.2px;
@@ -38,7 +40,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "GTWalsheimProBold", sans-serif !important;
+  font-family: "GTWalsheim", sans-serif !important;
   font-weight: 700;
 }
 p,
@@ -56,7 +58,7 @@ th {
   text-transform: capitalize;
   font-weight: 400;
   font-size: 13px;
-  font-family: "GTWalsheimProRegular", sans-serif;
+  font-family: "GTWalsheim", sans-serif;
 }
 a {
   text-decoration: none !important;

@@ -47,6 +47,8 @@ function ElectionContextProvider({ children }) {
     setLoading(false);
   };
 
+  
+
   useEffect(() => {
     //  if (electionYear) {
     getElectionDetail();

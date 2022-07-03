@@ -6,7 +6,7 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton,
+//   ModalCloseButton,
   Button,
 } from "@chakra-ui/react";
 import AlertComponent from "./AlertDialogue";
@@ -29,7 +29,7 @@ const ModalComponent = ({
       >
         <ModalOverlay />
         <ModalContent background={background}>
-          <ModalHeader fontFamily="GTWalsheimProBold" fontWeight="100">
+          <ModalHeader fontFamily="GTWalsheim" fontWeight="100">
             {header}
           </ModalHeader>
           <AlertComponent />

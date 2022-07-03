@@ -68,13 +68,13 @@ function Verify() {
           as="h6"
           color="brand.primary"
           fontSize="22px"
-          fontFamily="GTWalsheimProBold"
+          fontFamily="GTWalsheim"
           fontWeight="100"
         >
           {!loading && !status ? (
             <>
               Verification Failed.
-              <Text fontSize="16px" mt="30px" fontFamily="GTWalsheimProRegular">
+              <Text fontSize="16px" mt="30px" fontFamily="GTWalsheim">
                 {error}
               </Text>
             </>

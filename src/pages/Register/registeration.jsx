@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { Text } from "@chakra-ui/react";
 import {
   EnvelopeSimple,
@@ -9,14 +10,14 @@ import {
 } from "phosphor-react";
 
 import useRegisterForm from "./useRegisterForm";
+import Authentication from "../../components/Authentication";
+import AppButton from "../../common/button";
 import { ValidationRules } from "./validationRules";
 import {
   InputField,
   FileInputField,
   SelectField,
 } from "../../common/inputField";
-import Authentication from "../../components/Authentication";
-import AppButton from "../../common/button";
 
 function Register() {
   const { values, errors, loading, handleChange, handleImage, handleSubmit } =
@@ -124,6 +125,20 @@ function Register() {
       >
         {loading ? "please wait..." : "Register"}
       </AppButton>
+
+      <Text textAlign="center" paddingTop="1.5rem">
+        Already registered for the election?{" "}
+        <NavLink to="/login">
+          <span
+            style={{
+              color: "#703bda",
+              fontWeight: "600",
+            }}
+          >
+            Login here
+          </span>
+        </NavLink>
+      </Text>
     </Authentication>
   );
 }

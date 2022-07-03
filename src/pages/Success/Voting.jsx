@@ -25,7 +25,7 @@ function VotingSuccess() {
           as="h6"
           color="brand.primary"
           fontSize="22px"
-          fontFamily="GTWalsheimProBold"
+          fontFamily="GTWalsheim"
           fontWeight="100"
         >
           Voting was successful

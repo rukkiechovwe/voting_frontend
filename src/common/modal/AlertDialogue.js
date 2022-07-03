@@ -11,7 +11,6 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { X } from "phosphor-react";
-import AppButton from "../button";
 
 const AlertComponent = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();

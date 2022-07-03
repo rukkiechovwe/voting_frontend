@@ -1,12 +1,13 @@
 import React from "react";
-import { Button, Text } from "@chakra-ui/react";
-import { EnvelopeSimple, Key } from "phosphor-react";
+import { NavLink } from "react-router-dom";
+import { Text } from "@chakra-ui/react";
+import { EnvelopeSimple } from "phosphor-react";
 
 import useLoginForm from "./useLoginForm";
-import { ValidationRules } from "./validationRules";
-import { InputField } from "../../common/inputField";
 import Authentication from "../../components/Authentication";
 import AppButton from "../../common/button";
+import { ValidationRules } from "./validationRules";
+import { InputField } from "../../common/inputField";
 
 function Login() {
   const { isSecond, errors, loading, handleChange, handleSubmit } =
@@ -15,7 +16,7 @@ function Login() {
   const ErrorMessage = ({ type }) => {
     const errorMessage = errors[type];
     return errors[type] ? (
-      <p style={{ color: "red" }}>{errorMessage}</p>
+      <p style={{ color: "red", marginTop: "-15px" }}>{errorMessage}</p>
     ) : (
       <Text />
     );
@@ -53,6 +54,20 @@ function Login() {
           >
             {loading ? "please wait..." : "Send Login Link"}
           </AppButton>
+
+          <Text textAlign="center" paddingTop="1.5rem">
+            Haven't registered for the election?{" "}
+            <NavLink to="/register">
+              <span
+                style={{
+                  color: "#703bda",
+                  fontWeight: "600",
+                }}
+              >
+                Register here
+              </span>
+            </NavLink>
+          </Text>
         </div>
       )}
     </Authentication>

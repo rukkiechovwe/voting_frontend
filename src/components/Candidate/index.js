@@ -57,7 +57,7 @@ function Candidates({ isModalOpen, onModalClose }) {
           <Box>
             <Text
               fontSize="18px"
-              fontFamily="GTWalsheimProBold"
+              fontFamily="GTWalsheim"
               textAlign="center"
               my="20px"
             >

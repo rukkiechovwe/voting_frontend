@@ -1,5 +1,4 @@
 ___________BUGS___________
-+ Student registration flow not effective
 
 ___________TODO___________
 + integrate web sockets
@@ -8,8 +7,6 @@ ___________TODO___________
 
 ___________DONE___________
 + Student Voting
++ Student registration flow not effective
 
-
-flow...
-auth > success > email link > login
 

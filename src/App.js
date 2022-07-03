@@ -8,26 +8,24 @@ import { TOKEN } from "./utils/constants";
 import { StudentContext } from "./context/studentContext";
 
 function App() {
-//   const { hasToken, getToken } = useContext(StudentContext);
+  const { hasToken, getToken } = useContext(StudentContext);
 
-//   const navigate = useNavigate();
+  const navigate = useNavigate();
 
-//   useEffect(() => {
-//     const savedToken = localStorage.getItem(TOKEN);
-//     if (savedToken) {
-//       getToken(true);
-//       navigate("/");
-//     } else {
-//       navigate("/login");
-//     }
-//   }, []);
+  useEffect(() => {
+    const savedToken = localStorage.getItem(TOKEN);
+    if (savedToken) {
+      getToken(true);
+      navigate("/");
+    } else {
+      navigate("/login");
+    }
+  }, []);
   return (
     <ElectionContextProvider>
       <ChakraProvider theme={theme}>
         <Box className="App">
-          <Router 
-         //  hasToken={hasToken} 
-          />
+          <Router hasToken={hasToken} />
         </Box>
       </ChakraProvider>
     </ElectionContextProvider>
