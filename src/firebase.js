@@ -27,7 +27,6 @@ const firebaseStudentConfig = {
 };
 
 // Initialize Firebase
-
 const studentApp = initializeApp(firebaseStudentConfig, "student");
 
 export const auth = getAuth(studentApp);

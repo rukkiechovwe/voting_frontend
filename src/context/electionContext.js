@@ -13,7 +13,6 @@ function ElectionContextProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [candidates, setCandidates] = useState([]);
   const [electionDetail, setElectionDetail] = useState({});
-  //   const [polls, setPolls] = useState([]);
 
   //   const [electionYear, setElectionYear] = useState("");
   //   const getElectionYear = (year) => {
@@ -21,6 +20,7 @@ function ElectionContextProvider({ children }) {
   //   };
 
   const getElectionDetail = async () => {
+   // Get election metadata like
     setLoading(true);
     const docRef = firestore_doc(db, "2020", "Metadata");
     const docSnap = await firestore_getDoc(docRef);
@@ -36,6 +36,7 @@ function ElectionContextProvider({ children }) {
   };
 
   const getCandidates = async () => {
+   // get election candidates
     setLoading(true);
     const querySnapshot = await firestore_getDocs(
       firestore_collection(db, "2020", "candidates", `2020_candidates`)

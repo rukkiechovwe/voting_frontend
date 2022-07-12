@@ -9,9 +9,13 @@ import { StudentContext } from "./context/studentContext";
 
 function App() {
   const { hasToken, getToken } = useContext(StudentContext);
-
   const navigate = useNavigate();
 
+  /*=========================================
+      1.fetch token from local storage
+      2. if token, navigate to homepage
+      3. else, navigate to login oage...  
+   =========================================*/
   useEffect(() => {
     const savedToken = localStorage.getItem(TOKEN);
     if (savedToken) {

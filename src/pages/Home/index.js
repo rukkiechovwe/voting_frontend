@@ -33,6 +33,13 @@ function Home() {
         textAlign="center"
         mt="-67px"
       >
+        {/*==================================================================
+               1.fetch data
+               2. if data, check election date
+                  a. if election date, display election info and candidate modal
+                  b. else, display countdown
+               3. else, loading...  
+         ==================================================================*/}
         {loading ? (
           <Text>loading...</Text>
         ) : (
@@ -45,9 +52,11 @@ function Home() {
                 seconds={seconds}
               />
             ) : (
-              <ElectionInfo onOpen={onOpen} />
+              <>
+                <ElectionInfo onOpen={onOpen} />
+                <Candidates isModalOpen={isOpen} onModalClose={onClose} />
+              </>
             )}
-            <Candidates isModalOpen={isOpen} onModalClose={onClose} />
           </>
         )}
       </Flex>
