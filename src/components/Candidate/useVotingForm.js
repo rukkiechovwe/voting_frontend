@@ -36,6 +36,7 @@ const useVotingForm = () => {
   const handleSubmit = () => {
     console.log(values);
     console.log(candidates);
+    // TODO: move to backend, use batch and transaction to update and lock candidates
     candidates.forEach(async (candidate) => {
       if (candidate.name === values[candidate.pollName]) {
         console.log(candidate.name, candidate.votes + 1);

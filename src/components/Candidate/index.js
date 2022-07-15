@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useMemo } from "react";
 import {
   Box,
   GridItem,
@@ -25,6 +25,18 @@ function Candidates({ isModalOpen, onModalClose }) {
     currentQuestion,
   } = useVotingForm();
 
+  const getPolls = useMemo(() => {
+    return electionDetail.pollsAvailable.reduce((acc, curr) => {
+      // loop through candidates and find the one that matches the current poll
+      candidates.forEach((candidate) => {
+        if (candidate.pollName === curr && !acc.includes(candidate.pollName)) {
+          acc.push(candidate.pollName);
+        }
+      });
+      return acc;
+    }, []);
+  }, [candidates, electionDetail]);
+
   //   let pollNames = [];
   //   let polls = [];
   //   candidates.forEach((candidate) => {
@@ -50,7 +62,7 @@ function Candidates({ isModalOpen, onModalClose }) {
         <form>
           <Progress
             value={currentQuestion + 1}
-            max={electionDetail.pollsAvailable.length}
+            max={getPolls.length}
             size="sm"
             colorScheme="purple"
           />
@@ -61,20 +73,16 @@ function Candidates({ isModalOpen, onModalClose }) {
               textAlign="center"
               my="20px"
             >
-              Select a candidate for{" "}
-              {electionDetail.pollsAvailable[currentQuestion]}
+              Select a candidate for {getPolls[currentQuestion]}
             </Text>
             <RadioGroup
-              name={electionDetail.pollsAvailable[currentQuestion]}
+              name={getPolls[currentQuestion]}
               display="grid"
               gridTemplate=" 140px / 1fr"
               width="100%"
             >
               {candidates.map((candidate) => {
-                if (
-                  candidate.pollName ===
-                  electionDetail.pollsAvailable[currentQuestion]
-                ) {
+                if (candidate.pollName === getPolls[currentQuestion]) {
                   return (
                     <GridItem
                       background="brand.white"
@@ -119,7 +127,7 @@ function Candidates({ isModalOpen, onModalClose }) {
               >
                 Prev
               </AppButton>
-              {currentQuestion === electionDetail.pollsAvailable.length - 1 ? (
+              {currentQuestion === getPolls.length - 1 ? (
                 <AppButton
                   height="40px"
                   width="200px"
