@@ -11,10 +11,12 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { X } from "phosphor-react";
+import useVotingForm from "../../components/Candidate/useVotingForm";
 
 const AlertComponent = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef();
+  const { handleSubmit } = useVotingForm();
 
   return (
     <>
@@ -48,7 +50,12 @@ const AlertComponent = () => {
             <Button ref={cancelRef} onClick={onClose}>
               No
             </Button>
-            <Button colorScheme="red" ml={3} className="danger">
+            <Button
+              colorScheme="red"
+              ml={3}
+              className="danger"
+              onClick={handleSubmit}
+            >
               Yes
             </Button>
           </AlertDialogFooter>

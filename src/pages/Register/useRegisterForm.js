@@ -13,7 +13,6 @@ import {
 } from "../../firebase";
 import { TOKEN } from "../../utils/constants";
 
-
 const useRegisterForm = (validationRules) => {
   const navigate = useNavigate();
   const [values, setValues] = useState({});
@@ -49,9 +48,9 @@ const useRegisterForm = (validationRules) => {
         window.localStorage.setItem(TOKEN, values.email);
         const storageRef = firestore_ref(
           storage,
-          `students_fees/${`${values.fname} ${values.lname}`
-            .split(" ")
-            .join("_")}`
+          `students_fees/${values.email}`
+          // .split(" ")
+          // .join("_")}`
         );
         await firestore_uploadBytes(storageRef, values.fees).then((_) => {
           firestore_getDownloadURL(firestore_ref(storage, storageRef)).then(
@@ -62,9 +61,7 @@ const useRegisterForm = (validationRules) => {
               };
               const storageRef = firestore_ref(
                 storage,
-                `students_dues/${`${uploadStudent.fname} ${uploadStudent.lname}`
-                  .split(" ")
-                  .join("_")}`
+                `students_dues/${uploadStudent.email}`
               );
               await firestore_uploadBytes(storageRef, values.dues).then((_) => {
                 firestore_getDownloadURL(
@@ -81,10 +78,8 @@ const useRegisterForm = (validationRules) => {
                     db,
                     "2020", //electionYear
                     "students",
-                    `2020_students`, //${electionYear}_students
-                    `${`${uploadStudent.fname} ${uploadStudent.lname}`
-                      .split(" ")
-                      .join("_")}`
+                    `2020_students`,
+                    uploadStudent.email
                   );
                   await firestore_setDoc(docRef, uploadStudent);
                   await setLoading(false);

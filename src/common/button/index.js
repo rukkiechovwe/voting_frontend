@@ -10,7 +10,7 @@ const AppButton = ({
   margin,
   children,
   name,
-  disabled,
+  ...props
 }) => {
   return (
     <Button
@@ -22,7 +22,7 @@ const AppButton = ({
       color={color ? color : "brand.white"}
       className={name}
       onClick={onClick}
-      disabled={disabled}
+      {...props}
     >
       {children}
     </Button>

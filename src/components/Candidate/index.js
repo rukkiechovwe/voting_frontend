@@ -21,13 +21,12 @@ function Candidates({ isModalOpen, onModalClose }) {
     handleSubmit,
     handleNextPoll,
     handlePrevPoll,
-
     currentQuestion,
   } = useVotingForm();
 
   const getPolls = useMemo(() => {
+    // loop through candidates and find the one that matches the current poll
     return electionDetail.pollsAvailable.reduce((acc, curr) => {
-      // loop through candidates and find the one that matches the current poll
       candidates.forEach((candidate) => {
         if (candidate.pollName === curr && !acc.includes(candidate.pollName)) {
           acc.push(candidate.pollName);
@@ -36,17 +35,6 @@ function Candidates({ isModalOpen, onModalClose }) {
       return acc;
     }, []);
   }, [candidates, electionDetail]);
-
-  //   let pollNames = [];
-  //   let polls = [];
-  //   candidates.forEach((candidate) => {
-  //     if (!pollNames.includes(candidate.pollName)) {
-  //       pollNames.push(candidate.pollName);
-  //       polls.push({ pollName: candidate.pollName, candidate: candidate });
-  //     }
-  //   });
-  //   console.log(polls);
-  //   console.log(pollNames);
 
   return (
     <ModalComponent

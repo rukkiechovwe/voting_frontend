@@ -44,7 +44,7 @@ function Home() {
           <Text>loading...</Text>
         ) : (
           <>
-            {days + hours + minutes + seconds > 0 ? (
+            {!(days + hours + minutes + seconds > 0) ? (
               <Counter
                 days={days}
                 hours={hours}

@@ -1,34 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { db, firestore_doc, firestore_getDoc } from "../firebase";
+import { TOKEN } from "../utils/constants";
 
 export const StudentContext = React.createContext();
 
 function StudentContextProvider({ children }) {
-  //   const [studentList, setStudentList] = useState([]);
+  const [student, setStudent] = useState([]);
   const [hasToken, setHasToken] = useState(false);
+  const savedToken = localStorage.getItem(TOKEN);
+  
 
-  //   const getStudentList = async () => {
-  //     const querySnapshot = await firestore_getDocs(
-  //       firestore_collection(db, "admin")
-  //     );
-  //     const data = [];
-  //     querySnapshot.forEach((doc) => {
-  //       data.push(doc.data());
-  //       // console.log(doc.data());
-  //     });
-  //     setStudentList(data);
-  //   };
   const getToken = (token) => {
     setHasToken(token);
   };
-  //   useEffect(() => {
-  //     getStudentList();
-  //   }, []);
+
+  const getStudent = async () => {
+    if (savedToken) {
+      const docRef = firestore_doc(
+        db,
+        "2020", //electionYear
+        "students",
+        `2020_students`,
+        savedToken
+      );
+      const docSnap = await firestore_getDoc(docRef);
+
+      if (docSnap.exists()) {
+        setStudent(docSnap.data());
+        console.log("Document data:", docSnap.data());
+      } else {
+        console.log("No such document!");
+      }
+    }
+  };
+
+  useEffect(() => {
+    getStudent();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <StudentContext.Provider
       value={{
-        // studentList,
-
+        student,
         hasToken,
         setHasToken,
         getToken,

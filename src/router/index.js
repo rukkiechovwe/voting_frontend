@@ -17,13 +17,13 @@ const Router = ({ hasToken }) => {
       {hasToken ? (
         <>
           <Route exact path="/" element={<Home />} />
-          <Route path="/email-auth" element={<EmailAuth />} />
           <Route path="/register-success" element={<RegisterSuccess />} />
           <Route path="/voting-success" element={<VotingSuccess />} />
           <Route path="/verify" element={<Verify />} />
         </>
       ) : (
         <>
+          <Route path="/email-auth" element={<EmailAuth />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registeration />} />
         </>

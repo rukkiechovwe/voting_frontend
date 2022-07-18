@@ -1,12 +1,10 @@
-import {
-  Box,
-  Text,
-  ListItem,
-  UnorderedList,
-} from "@chakra-ui/react";
+import { Box, Text, ListItem, UnorderedList } from "@chakra-ui/react";
+import { useContext } from "react";
 import AppButton from "../common/button";
+import { StudentContext } from "../context/studentContext";
 
 function ElectionInfo({ onOpen }) {
+  const { student } = useContext(StudentContext);
 
   return (
     <Box
@@ -35,9 +33,15 @@ function ElectionInfo({ onOpen }) {
         <ListItem>You cannot vote more than once</ListItem>
       </UnorderedList>
       <Text mt="30px" fontSize="16px">
-        <em>Click the button to start Voting</em>
+        {student.eligible ? (
+          <em>Click the button to start voting!</em>
+        ) : (
+          <Text fontStyle="italic" color="brand.danger">You are not eligible to vote!</Text>
+        )}
       </Text>
-      <AppButton onClick={onOpen}>Start Voting</AppButton>
+      <AppButton onClick={onOpen} disabled={!student.eligible}>
+        Start Voting
+      </AppButton>
     </Box>
   );
 }
