@@ -6,12 +6,7 @@ export const StudentContext = React.createContext();
 
 function StudentContextProvider({ children }) {
   const [student, setStudent] = useState([]);
-  //   const [hasToken, setHasToken] = useState(false);
   const savedToken = localStorage.getItem(TOKEN);
-
-  //   const getToken = (token) => {
-  //     setHasToken(token);
-  //   };
 
   const getStudent = async () => {
     if (savedToken) {
@@ -42,9 +37,6 @@ function StudentContextProvider({ children }) {
     <StudentContext.Provider
       value={{
         student,
-        //   hasToken,
-        //   setHasToken,
-        //   getToken,
       }}
     >
       {children}

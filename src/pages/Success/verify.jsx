@@ -32,7 +32,6 @@ function Verify() {
           //  set session to expire in 24 hours
           const expireToken = new Date().setHours(new Date().getHours() + 24);
           localStorage.setItem("expire_token", expireToken);
-          window.localStorage.removeItem(TOKEN);
 
           setStatus(true);
           setLoading(false);

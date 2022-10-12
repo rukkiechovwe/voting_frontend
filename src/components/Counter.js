@@ -9,7 +9,6 @@ function Counter({ days, hours, minutes, seconds }) {
         textAlign="center"
         margin="0.5rem 1rem 2rem"
       >
-        {value && (
           <Heading
             as="h3"
             fontSize="5xl"
@@ -19,9 +18,8 @@ function Counter({ days, hours, minutes, seconds }) {
             borderRadius="10px"
             marginBottom="0.2rem"
           >
-            {value}
+            {value && value}
           </Heading>
-        )}
         <span>{title}</span>
       </Flex>
     );

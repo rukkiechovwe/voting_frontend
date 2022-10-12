@@ -35,7 +35,7 @@ function Candidates({ isModalOpen, onModalClose }) {
       });
       return acc;
     }, []);
-  }, [candidates, electionDetail]);
+  }, [candidates,electionDetail]);
 
   return (
     <ModalComponent
@@ -70,7 +70,7 @@ function Candidates({ isModalOpen, onModalClose }) {
               gridTemplate=" 140px / 1fr"
               width="100%"
             >
-              {candidates.map((candidate) => {
+              {candidates.map((candidate,key) => {
                 if (candidate.pollName === getPolls[currentQuestion]) {
                   return (
                     <GridItem
@@ -79,7 +79,7 @@ function Candidates({ isModalOpen, onModalClose }) {
                       m="10px"
                       p="10px"
                       boxShadow="0px 0px 10px rgba(94, 94, 94, 0.06)"
-                      key={candidate.name}
+                      key={key}
                     >
                       <Radio
                         colorScheme="green"

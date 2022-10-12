@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { TOKEN } from "../utils/constants";
+
 function PrivateRoutes({ children }) {
   const navigate = useNavigate();
 
@@ -14,6 +16,8 @@ function PrivateRoutes({ children }) {
     //  redirect to login if session time expires
     if (thisInstant > Number(expireToken)) {
       localStorage.removeItem("expire_token");
+      window.localStorage.removeItem(TOKEN);
+
       navigate("/login");
     }
   }, []);

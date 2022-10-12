@@ -26,22 +26,26 @@ function ElectionInfo({ onOpen }) {
       </Text>
       <UnorderedList textAlign="left">
         <ListItem>You can only select one candidate per position</ListItem>
+        <ListItem>You cannot vote more than once</ListItem>
         <ListItem>
           Once you click on the start button, you can only submit your votes to
           end the voting process
         </ListItem>
-        <ListItem>You cannot vote more than once</ListItem>
       </UnorderedList>
-      <Text mt="30px" fontSize="16px">
+      <Box mt="30px" fontSize="16px">
         {student.eligible ? (
           <em>Click the button to start voting!</em>
         ) : (
-          <Text fontStyle="italic" color="brand.danger">You are not eligible to vote!</Text>
+          <Text fontStyle="italic" color="brand.danger">
+            You are not eligible to vote!
+          </Text>
         )}
-      </Text>
-      <AppButton onClick={onOpen} disabled={!student.eligible}>
-        Start Voting
-      </AppButton>
+      </Box>
+      {student.eligible && (
+        <AppButton onClick={onOpen} disabled={!student.eligible}>
+          Start Voting
+        </AppButton>
+      )}
     </Box>
   );
 }
