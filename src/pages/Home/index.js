@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Flex, useDisclosure, Text } from "@chakra-ui/react";
 
+import PrivateRoutes from "../../layouts/PrivateRoutes"
 import Candidates from "../../components/Candidate";
 import Counter from "../../components/Counter";
 import Nav from "../../components/Nav";
@@ -19,7 +20,7 @@ function Home() {
   );
 
   return (
-    <>
+    <PrivateRoutes>
       <Nav />
       <Flex
         minH="100vh"
@@ -60,7 +61,7 @@ function Home() {
           </>
         )}
       </Flex>
-    </>
+    </PrivateRoutes>
   );
 }
 

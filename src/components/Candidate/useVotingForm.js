@@ -13,6 +13,7 @@ const useVotingForm = () => {
   const { electionDetail, candidates } = useContext(ElectionContext);
   const { student } = useContext(StudentContext);
   const [values, setValues] = useState({});
+  const [loading, setLoading] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const navigate = useNavigate();
 
@@ -41,6 +42,7 @@ const useVotingForm = () => {
   };
 
   const recordVotes = async () => {
+    setLoading(true);
     const voteEntry = {
       student_name: `${student.fname} ${student.lname}`,
       student_mat_no: student.matNo,
@@ -56,14 +58,12 @@ const useVotingForm = () => {
       `${voteEntry.student_email}` // subcollection-documentId
     );
     await firestore_setDoc(docRef, voteEntry);
-    await navigate("/voting-success");
   };
 
   const handleSubmit = async () => {
-    console.log(values);
-    console.log(candidates);
     // TODO: move to backend, use batch and transaction to update and lock candidates
-    candidates.forEach(async (candidate) => {
+    await recordVotes();
+    await candidates.forEach(async (candidate) => {
       if (candidate.name === values[candidate.pollName]) {
         const candidateRef = firestore_doc(
           db,
@@ -75,9 +75,9 @@ const useVotingForm = () => {
         await firestore_updateDoc(candidateRef, {
           votes: candidate.votes + 1,
         });
+        await navigate("/voting-success");
       }
     });
-    await recordVotes();
   };
 
   return {
@@ -87,6 +87,7 @@ const useVotingForm = () => {
     handlePrevPoll,
     currentQuestion,
     values,
+    loading,
   };
 };
 export default useVotingForm;

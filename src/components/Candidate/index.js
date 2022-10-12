@@ -22,6 +22,7 @@ function Candidates({ isModalOpen, onModalClose }) {
     handleNextPoll,
     handlePrevPoll,
     currentQuestion,
+    loading,
   } = useVotingForm();
 
   const getPolls = useMemo(() => {
@@ -44,7 +45,7 @@ function Candidates({ isModalOpen, onModalClose }) {
       footer={false}
       isCentered={true}
       background="brand.light"
-      closeOnOverlayClick={true}
+      closeOnOverlayClick={false}
     >
       {candidates.length > 0 && (
         <form>
@@ -108,7 +109,7 @@ function Candidates({ isModalOpen, onModalClose }) {
                 height="40px"
                 width="200px"
                 margin="10px"
-                disabled={currentQuestion <= 0}
+                disabled={currentQuestion <= 0 || loading}
                 onClick={() => {
                   handlePrevPoll();
                 }}
@@ -125,6 +126,8 @@ function Candidates({ isModalOpen, onModalClose }) {
                   onClick={() => {
                     handleSubmit();
                   }}
+                  isLoading={loading}
+                  loadingText="Submitting"
                 >
                   Submit
                 </AppButton>

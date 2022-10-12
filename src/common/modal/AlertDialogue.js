@@ -27,7 +27,9 @@ const AlertComponent = () => {
         top="0.9rem"
         padding="0.3rem 0.02rem"
         background="transparent"
-        color="brand.primary"
+        color="brand.danger"
+        width="40px !important"
+        className="danger"
       >
         <X size={24} />
       </Button>
@@ -42,7 +44,7 @@ const AlertComponent = () => {
 
         <AlertDialogContent>
           <AlertDialogHeader>Submit Votes</AlertDialogHeader>
-          <AlertDialogCloseButton />
+          <AlertDialogCloseButton width="40px !important" className="danger" />
           <AlertDialogBody>
             Are you sure you want to submit your votes?
           </AlertDialogBody>

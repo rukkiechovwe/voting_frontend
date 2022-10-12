@@ -22,7 +22,8 @@ const useLoginForm = (validationRules) => {
   };
 
   const actionCodeSettings = {
-    url: "https://unibennacos.netlify.app/verify",
+   //  url: "https://unibennacos.netlify.app/verify",
+    url:"http://localhost:3000/verify",
     handleCodeInApp: true,
   };
 
@@ -30,7 +31,8 @@ const useLoginForm = (validationRules) => {
     setLoading(true);
     firestore_sendSignInLinkToEmail(auth, values.email, actionCodeSettings)
       .then(async () => {
-        window.localStorage.setItem(TOKEN, values.email);
+        localStorage.setItem(TOKEN, values.email);
+        console.log(localStorage.getItem(TOKEN));
         await setLoading(false);
         await setIsSecond(true);
       })

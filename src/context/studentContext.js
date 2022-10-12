@@ -6,13 +6,12 @@ export const StudentContext = React.createContext();
 
 function StudentContextProvider({ children }) {
   const [student, setStudent] = useState([]);
-  const [hasToken, setHasToken] = useState(false);
+  //   const [hasToken, setHasToken] = useState(false);
   const savedToken = localStorage.getItem(TOKEN);
-  
 
-  const getToken = (token) => {
-    setHasToken(token);
-  };
+  //   const getToken = (token) => {
+  //     setHasToken(token);
+  //   };
 
   const getStudent = async () => {
     if (savedToken) {
@@ -27,7 +26,6 @@ function StudentContextProvider({ children }) {
 
       if (docSnap.exists()) {
         setStudent(docSnap.data());
-        console.log("Document data:", docSnap.data());
       } else {
         console.log("No such document!");
       }
@@ -44,9 +42,9 @@ function StudentContextProvider({ children }) {
     <StudentContext.Provider
       value={{
         student,
-        hasToken,
-        setHasToken,
-        getToken,
+        //   hasToken,
+        //   setHasToken,
+        //   getToken,
       }}
     >
       {children}

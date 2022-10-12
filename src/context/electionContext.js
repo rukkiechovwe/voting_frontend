@@ -26,7 +26,7 @@ function ElectionContextProvider({ children }) {
     const docSnap = await firestore_getDoc(docRef);
 
     if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
+      // console.log("Document data:", docSnap.data());
       setElectionDetail(docSnap.data());
       setLoading(false);
     } else {
@@ -42,7 +42,7 @@ function ElectionContextProvider({ children }) {
       firestore_collection(db, "2020", "candidates", `2020_candidates`)
     );
     querySnapshot.forEach((doc) => {
-      console.log(doc.data());
+      // console.log(doc.data());
       setCandidates((candidates) => [...candidates, doc.data()]);
     });
     setLoading(false);
