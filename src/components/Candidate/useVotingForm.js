@@ -10,7 +10,8 @@ import {
 } from "../../firebase";
 
 const useVotingForm = () => {
-  const { electionDetail, candidates } = useContext(ElectionContext);
+  const { electionYear, electionDetail, candidates } =
+    useContext(ElectionContext);
   const { student } = useContext(StudentContext);
   const [values, setValues] = useState({});
   const [loading, setLoading] = useState(false);
@@ -52,9 +53,9 @@ const useVotingForm = () => {
     };
     const docRef = firestore_doc(
       db,
-      "2020", // root collection
+      electionYear, // root collection
       "vote_entries", // documentId
-      `2020_vote_entries`, // subcollection
+      `${electionYear}_vote_entries`, // subcollection
       `${voteEntry.student_email}` // subcollection-documentId
     );
     await firestore_setDoc(docRef, voteEntry);
@@ -63,9 +64,9 @@ const useVotingForm = () => {
     if (candidate.name === values[candidate.pollName]) {
       const candidateRef = firestore_doc(
         db,
-        "2020",
+        electionYear,
         "candidates",
-        "2020_candidates",
+        `${electionYear}_candidates`,
         values[candidate.pollName].split(" ").join("_")
       );
       await firestore_updateDoc(candidateRef, {
@@ -77,9 +78,9 @@ const useVotingForm = () => {
   const updateStudentVoteCount = async () => {
     const washingtonRef = firestore_doc(
       db,
-      "2020",
+      electionYear,
       "students",
-      `2020_students`,
+      `${electionYear}_students`,
       student.email
     );
 

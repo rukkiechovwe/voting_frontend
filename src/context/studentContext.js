@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { db, firestore_doc, firestore_getDoc } from "../firebase";
 import { TOKEN } from "../utils/constants";
+import { ElectionContext } from "./electionContext";
 
 export const StudentContext = React.createContext();
 
 function StudentContextProvider({ children }) {
+  const { electionYear } = useContext(ElectionContext);
   const [student, setStudent] = useState([]);
   const savedToken = localStorage.getItem(TOKEN);
 
@@ -12,9 +14,9 @@ function StudentContextProvider({ children }) {
     if (savedToken) {
       const docRef = firestore_doc(
         db,
-        "2020", //electionYear
+        electionYear, //electionYear
         "students",
-        `2020_students`,
+        `${electionYear}_students`,
         savedToken
       );
       const docSnap = await firestore_getDoc(docRef);

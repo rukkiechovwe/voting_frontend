@@ -13,20 +13,20 @@ function ElectionContextProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [candidates, setCandidates] = useState([]);
   const [electionDetail, setElectionDetail] = useState({});
+  const [electionYear, setElectionYear] = useState("2020");
 
-  //   const [electionYear, setElectionYear] = useState("");
   //   const getElectionYear = (year) => {
   //     setElectionYear(year);
   //   };
 
-  const getElectionDetail = async () => {
+  const getElectionDetail = async (year) => {
     // Get election metadata like
     setLoading(true);
-    const docRef = firestore_doc(db, "2020", "Metadata");
+    const docRef = firestore_doc(db, year, "Metadata");
     const docSnap = await firestore_getDoc(docRef);
 
     if (docSnap.exists()) {
-      // console.log("Document data:", docSnap.data());
+      console.log("Document data:", docSnap.data());
       setElectionDetail(docSnap.data());
       setLoading(false);
     } else {
@@ -35,11 +35,11 @@ function ElectionContextProvider({ children }) {
     }
   };
 
-  const getCandidates = async () => {
+  const getCandidates = async (year) => {
     // get election candidates
     setLoading(true);
     const querySnapshot = await firestore_getDocs(
-      firestore_collection(db, "2020", "candidates", `2020_candidates`)
+      firestore_collection(db, year, "candidates", `${year}_candidates`)
     );
     setCandidates([]);
     querySnapshot.forEach((doc) => {
@@ -50,17 +50,16 @@ function ElectionContextProvider({ children }) {
   };
 
   useEffect(() => {
-    //  if (electionYear) {
-    getElectionDetail();
-    getCandidates();
-
-    //  }
-  }, []);
+    if (electionYear) {
+      getElectionDetail(electionYear);
+      getCandidates(electionYear);
+    }
+  }, [electionYear]);
 
   return (
     <ElectionContext.Provider
       value={{
-        //   electionYear,
+        electionYear,
         //   getElectionYear,
         electionDetail,
         candidates,

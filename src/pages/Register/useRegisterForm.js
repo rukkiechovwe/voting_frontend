@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   auth,
@@ -12,12 +12,14 @@ import {
   firestore_getDownloadURL,
 } from "../../firebase";
 import { TOKEN } from "../../utils/constants";
+import { ElectionContext } from "../../context/electionContext";
 
 const useRegisterForm = (validationRules) => {
   const navigate = useNavigate();
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const { electionYear } = useContext(ElectionContext);
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -77,9 +79,9 @@ const useRegisterForm = (validationRules) => {
                   delete uploadStudent.dues;
                   const docRef = firestore_doc(
                     db,
-                    "2020", //electionYear
+                    electionYear, //electionYear
                     "students",
-                    `2020_students`,
+                    `${electionYear}_students`,
                     uploadStudent.email
                   );
                   await firestore_setDoc(docRef, uploadStudent);
