@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import {
   auth,
-  firestore_sendSignInLinkToEmail,
   firestore_isSignInWithEmailLink,
+  firestore_signInWithEmailLink,
 } from "../../firebase";
-
 import { TOKEN } from "../../utils/constants";
 
 function Verify() {
@@ -17,42 +16,47 @@ function Verify() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  if (firestore_isSignInWithEmailLink(auth, window.location.href)) {
-    let email = window.localStorage.getItem(TOKEN);
-    if (!email) {
-      email = window.prompt("Please provide your email for confirmation");
+  useEffect(() => {
+    if (firestore_isSignInWithEmailLink(auth, window.location.href)) {
+      let email = window.localStorage.getItem(TOKEN);
+
+      // if email is not found, redirect the user to register page
+      if (!email) {
+        navigate("/register");
+      }
+
+      firestore_signInWithEmailLink(auth, email, window.location.href)
+        .then((result) => {
+          toast.success("Verification Successful!");
+
+          //  set session to expire in 24 hours
+          const expireToken = new Date().setHours(new Date().getHours() + 24);
+          localStorage.setItem("expire_token", expireToken);
+          window.localStorage.removeItem(TOKEN);
+
+          setStatus(true);
+          setLoading(false);
+
+          setTimeout(() => {
+            navigate("/");
+          }, 3000);
+        })
+        .catch((error) => {
+          toast.error("Verification Failed!");
+
+          setError(error.message);
+          setStatus(false);
+          setLoading(false);
+
+          if (error.message.includes("auth/argument-error")) {
+            setTimeout(() => {
+              navigate("/register");
+            }, 3000);
+          }
+        });
     }
-    firestore_sendSignInLinkToEmail(auth, email, window.location.href)
-      .then((result) => {
-        window.localStorage.removeItem(TOKEN);
-        const expireToken = new Date().setMinutes(5);
-        //   const expireToken = new Date().setHours(24);
-        localStorage.setItem("expire_token", expireToken);
+  }, []);
 
-        console.log(result);
-        setStatus(true);
-        setLoading(false);
-        toast.success("Verification Successful!");
-        setTimeout(() => {
-          navigate("/");
-        }, 3000);
-      })
-      .catch((error) => {
-        console.log(error);
-        console.log(error.code);
-        console.log(error.message);
-        setStatus(false);
-        setLoading(false);
-        toast.error("Verification Failed!");
-        setError(error.message);
-
-        //   if (error.message.includes("auth/argument-error")) {
-        //     setTimeout(() => {
-        //       navigate("/register");
-        //     }, 3000);
-        //   }
-      });
-  }
   return (
     <Flex
       minH="100vh"

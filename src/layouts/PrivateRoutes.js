@@ -7,9 +7,11 @@ function PrivateRoutes({ children }) {
   useEffect(() => {
     const thisInstant = Date.now();
     const expireToken = localStorage.getItem("expire_token");
+
     if (!expireToken) {
       navigate("/login");
     }
+    //  redirect to login if session time expires
     if (thisInstant > Number(expireToken)) {
       localStorage.removeItem("expire_token");
       navigate("/login");

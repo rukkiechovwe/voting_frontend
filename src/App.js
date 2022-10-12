@@ -9,7 +9,7 @@ import { StudentContext } from "./context/studentContext";
 
 function App() {
 //   const { hasToken, getToken } = useContext(StudentContext);
-  const navigate = useNavigate();
+//   const navigate = useNavigate();
 
   /*=========================================
       1.fetch token from local storage

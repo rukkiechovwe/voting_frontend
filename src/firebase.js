@@ -3,6 +3,7 @@ import {
   getAuth,
   sendSignInLinkToEmail,
   isSignInWithEmailLink,
+  signInWithEmailLink,
 } from "firebase/auth";
 import {
   getFirestore,
@@ -35,6 +36,7 @@ export const storage = getStorage(studentApp);
 
 export const firestore_sendSignInLinkToEmail = sendSignInLinkToEmail;
 export const firestore_isSignInWithEmailLink = isSignInWithEmailLink;
+export const firestore_signInWithEmailLink = signInWithEmailLink;
 export const firestore_collection = collection;
 export const firestore_setDoc = setDoc;
 export const firestore_addDoc = addDoc;

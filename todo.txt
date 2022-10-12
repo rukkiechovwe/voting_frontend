@@ -1,16 +1,11 @@
 ___________BUGS___________
-+ authentication before viewing page
 
 ___________TODO___________
 + No voting more than once
 + integrate web sockets
 
-
-NOTE: user is not logged in but can see the election info...
-so check if user is logged in, if true show election info and check if user is eligible to vote
-if, user is not logged in, redirect to login page
-
-login session lasts 24 hours or less
+___________DONE___________
+- authentication before viewing page
 
 
 

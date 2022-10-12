@@ -31,7 +31,7 @@ function EmailAuth() {
           Email Authentication
         </Heading>
         <Text>We have sent you an email verification link</Text>
-        <Text>Click on the link to continue the voting process.</Text>
+        <Text>Click on the link to continue the registration process.</Text>
       </Box>
     </Flex>
   );
