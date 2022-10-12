@@ -32,7 +32,7 @@ function VotingSuccess() {
         </Heading>
         <Text>
           Thank you for voting for your favorite candidate. Be rest assured that
-          your votes count.
+          your vote counts.
         </Text>
       </Box>
     </Flex>

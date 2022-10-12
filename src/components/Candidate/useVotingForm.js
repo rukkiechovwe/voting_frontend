@@ -59,25 +59,46 @@ const useVotingForm = () => {
     );
     await firestore_setDoc(docRef, voteEntry);
   };
+  const recordCandidates = async (candidate) => {
+    if (candidate.name === values[candidate.pollName]) {
+      const candidateRef = firestore_doc(
+        db,
+        "2020",
+        "candidates",
+        "2020_candidates",
+        values[candidate.pollName].split(" ").join("_")
+      );
+      await firestore_updateDoc(candidateRef, {
+        votes: candidate.votes + 1,
+      });
+      await navigate("/voting-success");
+    }
+  };
+  const updateStudentVoteCount = async () => {
+    const washingtonRef = firestore_doc(
+      db,
+      "2020",
+      "students",
+      `2020_students`,
+      student.email
+    );
+
+    await firestore_updateDoc(washingtonRef, {
+      hasVoted: true,
+    });
+  };
 
   const handleSubmit = async () => {
     // TODO: move to backend, use batch and transaction to update and lock candidates
-    await recordVotes();
-    await candidates.forEach(async (candidate) => {
-      if (candidate.name === values[candidate.pollName]) {
-        const candidateRef = firestore_doc(
-          db,
-          "2020",
-          "candidates",
-          "2020_candidates",
-          values[candidate.pollName].split(" ").join("_")
-        );
-        await firestore_updateDoc(candidateRef, {
-          votes: candidate.votes + 1,
-        });
-        await navigate("/voting-success");
-      }
-    });
+    if (!student.hasVoted) {
+      await recordVotes();
+      await updateStudentVoteCount();
+      await candidates.forEach(async (candidate) => {
+        recordCandidates(candidate);
+      });
+    } else {
+      console.log("cannot vote more than once");
+    }
   };
 
   return {

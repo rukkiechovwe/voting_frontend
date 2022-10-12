@@ -33,15 +33,19 @@ function ElectionInfo({ onOpen }) {
         </ListItem>
       </UnorderedList>
       <Box mt="30px" fontSize="16px">
-        {student.eligible ? (
-          <em>Click the button to start voting!</em>
+        {student.eligible && !student.hasVoted ? (
+          <Text fontStyle="italic">Click the button to start voting! </Text>
+        ) : student.eligible && student.hasVoted ? (
+          <Text fontStyle="italic" color="brand.danger">
+            You cannot vote more than once!
+          </Text>
         ) : (
           <Text fontStyle="italic" color="brand.danger">
             You are not eligible to vote!
           </Text>
         )}
       </Box>
-      {student.eligible && (
+      {student.eligible && !student.hasVoted && (
         <AppButton onClick={onOpen} disabled={!student.eligible}>
           Start Voting
         </AppButton>

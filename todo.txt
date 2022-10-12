@@ -1,11 +1,12 @@
 ___________BUGS___________
 
 ___________TODO___________
-+ No voting more than once
 + integrate web sockets
 
 ___________DONE___________
 - authentication before viewing page
+- No voting more than once
+
 
 
 

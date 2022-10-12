@@ -16,6 +16,7 @@ import ModalComponent from "../../common/modal/Modal";
 
 function Candidates({ isModalOpen, onModalClose }) {
   const { candidates, electionDetail } = useContext(ElectionContext);
+
   const {
     handleChange,
     handleSubmit,
@@ -35,7 +36,7 @@ function Candidates({ isModalOpen, onModalClose }) {
       });
       return acc;
     }, []);
-  }, [candidates,electionDetail]);
+  }, [candidates, electionDetail]);
 
   return (
     <ModalComponent
@@ -70,7 +71,7 @@ function Candidates({ isModalOpen, onModalClose }) {
               gridTemplate=" 140px / 1fr"
               width="100%"
             >
-              {candidates.map((candidate,key) => {
+              {candidates.map((candidate, key) => {
                 if (candidate.pollName === getPolls[currentQuestion]) {
                   return (
                     <GridItem

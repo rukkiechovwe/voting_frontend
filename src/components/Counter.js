@@ -3,25 +3,29 @@ import { Heading, Text, Flex } from "@chakra-ui/react";
 function Counter({ days, hours, minutes, seconds }) {
   const Time = ({ value, title }) => {
     return (
-      <Flex
-        flexDirection="column"
-        color="brand.primary"
-        textAlign="center"
-        margin="0.5rem 1rem 2rem"
-      >
-          <Heading
-            as="h3"
-            fontSize="5xl"
-            padding="0.7rem"
-            color="brand.white"
-            background="brand.primary"
-            borderRadius="10px"
-            marginBottom="0.2rem"
+      <>
+        {value && (
+          <Flex
+            flexDirection="column"
+            color="brand.primary"
+            textAlign="center"
+            margin="0.5rem 1rem 2rem"
           >
-            {value && value}
-          </Heading>
-        <span>{title}</span>
-      </Flex>
+            <Heading
+              as="h3"
+              fontSize="5xl"
+              padding="0.7rem"
+              color="brand.white"
+              background="brand.primary"
+              borderRadius="10px"
+              marginBottom="0.2rem"
+            >
+              {value}
+            </Heading>
+            <span>{title}</span>
+          </Flex>
+        )}
+      </>
     );
   };
   return (

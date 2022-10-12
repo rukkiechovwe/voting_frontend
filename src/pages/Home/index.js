@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Flex, useDisclosure, Text } from "@chakra-ui/react";
 
-import PrivateRoutes from "../../layouts/PrivateRoutes"
+import PrivateRoutes from "../../layouts/PrivateRoutes";
 import Candidates from "../../components/Candidate";
 import Counter from "../../components/Counter";
 import Nav from "../../components/Nav";
@@ -52,11 +52,13 @@ function Home() {
                 minutes={minutes}
                 seconds={seconds}
               />
-            ) : (
+            ) : !(days + hours + minutes + seconds < 0) ? (
               <>
                 <ElectionInfo onOpen={onOpen} />
                 <Candidates isModalOpen={isOpen} onModalClose={onClose} />
               </>
+            ) : (
+              <Text>loading...</Text>
             )}
           </>
         )}

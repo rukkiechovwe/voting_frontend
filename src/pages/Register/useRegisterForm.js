@@ -71,6 +71,7 @@ const useRegisterForm = (validationRules) => {
                     ...uploadStudent,
                     duesUrl: url,
                     eligible: false,
+                    hasVoted: false,
                   };
                   delete uploadStudent.fees;
                   delete uploadStudent.dues;
