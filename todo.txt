@@ -1,15 +1,11 @@
 ___________BUGS___________
-+ force reload voter site after voting/use realtime uodate to update "hasVoted" field
-
++ validate student email on voters site
 
 ___________TODO___________
-+ validate student email on voters site
++ move to backend, use batch and transaction to update and lock candidates
 
 
 ___________DONE___________
 - authentication before viewing page
 - No voting more than once
-
-
-
-
+- force reload voter site after voting/use realtime uodate to update "hasVoted" field
