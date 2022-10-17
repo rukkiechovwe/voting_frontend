@@ -72,7 +72,10 @@ const useVotingForm = () => {
       await firestore_updateDoc(candidateRef, {
         votes: candidate.votes + 1,
       });
-      await navigate("/voting-success");
+      await window.open(
+        "https://unibennacos.netlify.app/voting-success",
+        "_self"
+      );
     }
   };
   const updateStudentVoteCount = async () => {
