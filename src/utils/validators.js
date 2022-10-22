@@ -1,8 +1,7 @@
 const regexText = "";
 const regexNumber = /^[0-9]+$/;
-const regexEmail =
-  /^[^\s@]+\.[^\s@]+\@[p,h,y,s,c,i]+\.[u,n,i,b,e,n]+\.[e,d,u]+$/;
+const studentEmailRegex = /^[\w-.]+@(physci.uniben.edu)$/;
 
 export const validateText = (text) => regexText.test(text);
 export const validateNumber = (number) => regexNumber.test(number);
-export const validateEmail = (email) => regexEmail.test(email);
+export const validateEmail = (email) => studentEmailRegex.test(email);
