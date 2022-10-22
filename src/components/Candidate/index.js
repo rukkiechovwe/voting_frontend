@@ -103,6 +103,7 @@ function Candidates({ isModalOpen, onModalClose }) {
                     </GridItem>
                   );
                 }
+                return <React.Fragment></React.Fragment>;
               })}
             </RadioGroup>
             <Flex justifyContent="flex-end" mt="20px">
